@@ -5,7 +5,7 @@
     "viewportHeight": 600,
     "waitForAnimation": true,
     "animationDistanceThreshold": 20,
-    "defaultCommandTimeout": 6000,
+    "defaultCommandTimeout": 15000,
     "execTimeout": 60000,
     "pageLoadTimeout": 60000,
     "requestTimeout": 15000,
