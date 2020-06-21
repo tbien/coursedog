@@ -6,4 +6,12 @@ declare namespace Cypress {
 		 */
 		validateText(text: string): Chainable<Element>;
 	}
+
+	interface Chainable {
+		/**
+		 * Custom command to validate element's value.
+		 * @example cy.get('#id').validateValue('Online Chat');
+		 */
+		validateValue(text: string): Chainable<Element>;
+	}
 }

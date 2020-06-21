@@ -4,8 +4,8 @@ export default class EventDetailsCardPage {
 	private addToGoogleCalendarLocator: string = 'article div > a > button';
 	private address: string = 'article p.text-grey-darker';
 	private eventType: string = 'Event Type';
-    private organizationLocator: string = 'article label:contains(Organized by) ~ div a';
-    private upcomingEvents: string = 'aside .card';
+	private organizationLocator: string = 'article label:contains(Organized by) ~ div a';
+	private upcomingEvents: string = 'aside .card';
 
 	public addToCalendarLinkIsVisible() {
 		cy.get(this.addToCalendarLocator).should('be.visible');

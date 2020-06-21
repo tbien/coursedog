@@ -10,3 +10,16 @@ Cypress.Commands.add(
 			});
 	}
 );
+
+//Custom command to validate element's text;
+Cypress.Commands.add(
+	'validateValue',
+	{ prevSubject: 'element' },
+	(subject, value) => {
+		cy.wrap(subject)
+			.invoke('val')
+			.then((x) => {
+				expect(x.trim()).equal(value);
+			});
+	}
+);

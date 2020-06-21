@@ -1,6 +1,7 @@
 import BasePage from './base-page';
 import NavigationMenu from './navigation-page';
 import EventDetailsCardPage from './event-details-card-page';
+import CalendarPage from './calendar-page';
 
 export default class EventsPage extends BasePage {
 	//page elements locators
@@ -8,9 +9,15 @@ export default class EventsPage extends BasePage {
 	private cardTitle: string = 'div.card div.card-content> a';
 
 	public navigationMenu: NavigationMenu = new NavigationMenu();
+	public calendar: CalendarPage = new CalendarPage();
 
 	public eventCardIsNotDisplayed() {
 		cy.get(this.eventCardLocator).should('not.exist');
+		return this;
+	}
+
+	public notificationIsDisplayed(message: string) {
+		cy.contains(message).should('be.visible');
 		return this;
 	}
 

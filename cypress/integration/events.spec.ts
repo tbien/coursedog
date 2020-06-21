@@ -8,16 +8,17 @@ describe('Events test', () => {
 	});
 
 	it('should check there are no any planned events for 2020-06-16', () => {
-		homePage.setDate('2020-06-16');
-		var todayEventsPage = homePage.clickTodaysEvents();
-		cy.contains('No events today').should('be.visible');
-		todayEventsPage.eventCardIsNotDisplayed();
+		homePage
+			.setDate('2020-06-16')
+			.navigationMenu.clickTodaysEventsLink()
+			.notificationIsDisplayed('No events today')
+			.eventCardIsNotDisplayed();
 	});
 
 	it('should check there is one planned event for 2020-06-18 and 3 upcoming events for entire week', () => {
 		homePage
 			.setDate('2020-06-18')
-			.clickTodaysEvents()
+			.navigationMenu.clickTodaysEventsLink()
 			.eventCardIsDisplayed('QA Recruitment Task Start')
 			.navigationMenu.clickUpcomingEventsLink()
 			.validateNumberOfDisplayedCards(3);
@@ -41,15 +42,27 @@ describe('Events test', () => {
 			.setDate('2020-06-18')
 			.navigationMenu.searchEvent('Finale')
 			.searchResultsCardsAreVisible(1)
+			.showingNumberOfResultsInformationIsCorrect(1)
 			.eventCard.eventCardIsDisplayed('QA Recruitment Finale');
-    });
-    
-    it('should check filtering by organization', () => {
+	});
+
+	it('should check filtering by organization', () => {
 		homePage
 			.setDate('2020-06-18')
-			.navigationMenu.searchEvent('Finale')
-			.searchResultsCardsAreVisible(1)
-            .clearSearchInput()
-            .selectOrganization('Coursedog Team');
+			.navigationMenu.searchEvent(' ')
+			.selectOrganization('Coursedog Team')
+			.showingNumberOfResultsInformationIsCorrect(5)
+			.eventCard.validateNumberOfDisplayedCards(5);
+	});
+
+	it('should check events by selecting date in the calendar', () => {
+		homePage
+			.setDate('2020-06-18')
+			.calendar.selectDay(18)
+			.eventCardIsDisplayed('QA Recruitment Task Start')
+			.validateNumberOfDisplayedCards(1)
+			.calendar.selectDay(19)
+			.notificationIsDisplayed('No events found')
+			.eventCardIsNotDisplayed();
 	});
 });
