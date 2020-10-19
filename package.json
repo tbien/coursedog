@@ -1,0 +1,31 @@
+{
+	"name": "coursedog",
+	"version": "1.0.0",
+	"description": "automated end to end tests in cypress for coursedog",
+	"main": "index.js",
+	"scripts": {
+		"cy:open": "cypress open",
+		"cy:run-chrome": "cypress run --browser chrome --headless",
+		"cy:run-electron": "cypress run --browser electron --headless"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/tbien/coursedog.git"
+	},
+	"keywords": [
+		"cypress",
+		"automation",
+		"framework"
+	],
+	"author": "Tomasz Bien",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/tbien/coursedog/issues"
+	},
+	"homepage": "https://github.com/tbien/coursedog#readme",
+	"dependencies": {
+		"cypress": "^4.8.0",
+		"prettier": "^2.0.5",
+		"typescript": "^3.9.5"
+	}
+}
